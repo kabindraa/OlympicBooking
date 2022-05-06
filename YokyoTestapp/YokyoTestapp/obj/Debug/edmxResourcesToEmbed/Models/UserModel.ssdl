@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YokyoDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BookingTable">
+    <Key>
+      <PropertyRef Name="BookingId" />
+    </Key>
+    <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="DetailId" Type="int" />
+    <Property Name="BookingDate" Type="date" />
+    <Property Name="Remarks" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="BroadCastDetailTable">
+    <Key>
+      <PropertyRef Name="DetailId" />
+    </Key>
+    <Property Name="DetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameType" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="GameName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="BroadCastDate" Type="date" />
+    <Property Name="Remarks" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__BookingTa__Detai__1A14E395">
+    <End Role="BroadCastDetailTable" Type="Self.BroadCastDetailTable" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="BookingTable" Type="Self.BookingTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BroadCastDetailTable">
+        <PropertyRef Name="DetailId" />
+      </Principal>
+      <Dependent Role="BookingTable">
+        <PropertyRef Name="DetailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BookingTa__UserI__1920BF5C">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="BookingTable" Type="Self.BookingTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="BookingTable">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="YokyoDatabaseModelStoreContainer">
+    <EntitySet Name="BookingTable" EntityType="Self.BookingTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BroadCastDetailTable" EntityType="Self.BroadCastDetailTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__BookingTa__Detai__1A14E395" Association="Self.FK__BookingTa__Detai__1A14E395">
+      <End Role="BroadCastDetailTable" EntitySet="BroadCastDetailTable" />
+      <End Role="BookingTable" EntitySet="BookingTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BookingTa__UserI__1920BF5C" Association="Self.FK__BookingTa__UserI__1920BF5C">
+      <End Role="UserTable" EntitySet="UserTable" />
+      <End Role="BookingTable" EntitySet="BookingTable" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

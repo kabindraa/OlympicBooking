@@ -1,0 +1,52 @@
+﻿@model IEnumerable<YokyoTestapp.Models.BroadCastDetailTable>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GameType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GameName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BroadCastDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GameType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GameName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BroadCastDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remarks)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DetailId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DetailId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DetailId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

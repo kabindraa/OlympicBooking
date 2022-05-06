@@ -1,0 +1,50 @@
+﻿@model YokyoTestapp.Models.BookingTable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BookingTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remarks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BroadCastDetailTable.GameType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BroadCastDetailTable.GameType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserTable.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserTable.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BookingId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

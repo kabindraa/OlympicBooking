@@ -1,0 +1,35 @@
+﻿@using System.Data;
+@model DataTable
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>bookingDetails</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <th>Audience Id</th>
+                <th>Detail Id</th>
+                <th>Booking Date</th>
+                <th>Remarks</th>
+            </tr>
+            @foreach (DataRow row in Model.Rows)
+            {
+                <tr>
+                    <td>@row["UserId"]</td>
+                    <td>@row["DetailId"]</td>
+                    <td>@row["BookingDate"]</td>
+                    <td>@row["Remarks"]</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

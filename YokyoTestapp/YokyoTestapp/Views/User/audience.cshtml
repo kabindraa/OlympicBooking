@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>administrator</title>
+
+
+
+</head>
+<body>
+    <div>
+
+        <h1>This is Audience</h1>
+    </div>
+    @using (Html.BeginForm())
+    {
+<table>
+    <tr> <td>UserName:</td> 
+       <td> <input type="text" name="UserName" /></td>
+    </tr>
+    <tr>
+    <td>Password:</td>
+         <td> <input type="password" name="Password" /> </td></tr>
+    
+   
+    <tr> <td><input type="submit" value="Sign In" name="login" /></td></tr>
+    <tr><td><input type="submit" value="Sign Up" name="login" /></td></tr>
+</table>      
+    }
+</body>
+</html>

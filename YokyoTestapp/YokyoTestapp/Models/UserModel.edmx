@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="YokyoDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BookingTable">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="DetailId" Type="int" />
+          <Property Name="BookingDate" Type="date" />
+          <Property Name="Remarks" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="BroadCastDetailTable">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GameType" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="GameName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="BroadCastDate" Type="date" />
+          <Property Name="Remarks" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__BookingTa__Detai__1A14E395">
+          <End Role="BroadCastDetailTable" Type="Self.BroadCastDetailTable" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookingTable" Type="Self.BookingTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BroadCastDetailTable">
+              <PropertyRef Name="DetailId" />
+            </Principal>
+            <Dependent Role="BookingTable">
+              <PropertyRef Name="DetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BookingTa__UserI__1920BF5C">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookingTable" Type="Self.BookingTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BookingTable">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YokyoDatabaseModelStoreContainer">
+          <EntitySet Name="BookingTable" EntityType="Self.BookingTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BroadCastDetailTable" EntityType="Self.BroadCastDetailTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BookingTa__Detai__1A14E395" Association="Self.FK__BookingTa__Detai__1A14E395">
+            <End Role="BroadCastDetailTable" EntitySet="BroadCastDetailTable" />
+            <End Role="BookingTable" EntitySet="BookingTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BookingTa__UserI__1920BF5C" Association="Self.FK__BookingTa__UserI__1920BF5C">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="BookingTable" EntitySet="BookingTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="YokyoDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BookingTable">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="DetailId" Type="Int32" />
+          <Property Name="BookingDate" Type="DateTime" Precision="0" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BroadCastDetailTable" Relationship="Self.FK__BookingTa__Detai__1A14E395" FromRole="BookingTable" ToRole="BroadCastDetailTable" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK__BookingTa__UserI__1920BF5C" FromRole="BookingTable" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="BroadCastDetailTable">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GameName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BroadCastDate" Type="DateTime" Precision="0" />
+          <Property Name="Remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BookingTable" Relationship="Self.FK__BookingTa__Detai__1A14E395" FromRole="BroadCastDetailTable" ToRole="BookingTable" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BookingTable" Relationship="Self.FK__BookingTa__UserI__1920BF5C" FromRole="UserTable" ToRole="BookingTable" />
+        </EntityType>
+        <Association Name="FK__BookingTa__Detai__1A14E395">
+          <End Role="BroadCastDetailTable" Type="Self.BroadCastDetailTable" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookingTable" Type="Self.BookingTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BroadCastDetailTable">
+              <PropertyRef Name="DetailId" />
+            </Principal>
+            <Dependent Role="BookingTable">
+              <PropertyRef Name="DetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BookingTa__UserI__1920BF5C">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookingTable" Type="Self.BookingTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BookingTable">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YokyoDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BookingTable" EntityType="Self.BookingTable" />
+          <EntitySet Name="BroadCastDetailTable" EntityType="Self.BroadCastDetailTable" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" />
+          <AssociationSet Name="FK__BookingTa__Detai__1A14E395" Association="Self.FK__BookingTa__Detai__1A14E395">
+            <End Role="BroadCastDetailTable" EntitySet="BroadCastDetailTable" />
+            <End Role="BookingTable" EntitySet="BookingTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BookingTa__UserI__1920BF5C" Association="Self.FK__BookingTa__UserI__1920BF5C">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="BookingTable" EntitySet="BookingTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="YokyoDatabaseModelStoreContainer" CdmEntityContainer="YokyoDatabaseEntities">
+          <EntitySetMapping Name="BookingTable">
+            <EntityTypeMapping TypeName="YokyoDatabaseModel.BookingTable">
+              <MappingFragment StoreEntitySet="BookingTable">
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BroadCastDetailTable">
+            <EntityTypeMapping TypeName="YokyoDatabaseModel.BroadCastDetailTable">
+              <MappingFragment StoreEntitySet="BroadCastDetailTable">
+                <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+                <ScalarProperty Name="GameType" ColumnName="GameType" />
+                <ScalarProperty Name="GameName" ColumnName="GameName" />
+                <ScalarProperty Name="BroadCastDate" ColumnName="BroadCastDate" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTable">
+            <EntityTypeMapping TypeName="YokyoDatabaseModel.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

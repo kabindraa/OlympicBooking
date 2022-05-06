@@ -1,0 +1,51 @@
+﻿@model YokyoTestapp.Models.BroadCastDetailTable
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BroadCastDetailTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GameType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GameType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GameName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GameName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BroadCastDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BroadCastDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remarks)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DetailId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

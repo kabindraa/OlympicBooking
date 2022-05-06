@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="YokyoDatabaseModelStoreContainer" CdmEntityContainer="YokyoDatabaseEntities">
+    <EntitySetMapping Name="BookingTable">
+      <EntityTypeMapping TypeName="YokyoDatabaseModel.BookingTable">
+        <MappingFragment StoreEntitySet="BookingTable">
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BroadCastDetailTable">
+      <EntityTypeMapping TypeName="YokyoDatabaseModel.BroadCastDetailTable">
+        <MappingFragment StoreEntitySet="BroadCastDetailTable">
+          <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+          <ScalarProperty Name="GameType" ColumnName="GameType" />
+          <ScalarProperty Name="GameName" ColumnName="GameName" />
+          <ScalarProperty Name="BroadCastDate" ColumnName="BroadCastDate" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTable">
+      <EntityTypeMapping TypeName="YokyoDatabaseModel.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

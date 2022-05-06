@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AudienceDashboard</title>
+   
+        
+
+        <style>
+            h1, h2 {
+                text-align: center;
+                color: green;
+                font-family: Verdana;
+            }
+
+            #menu {
+                width: 100%;
+                text-align: center;
+            }
+
+            .link {
+                font-size: 24px;
+                text-decoration: none;
+                padding: 15px;
+                background: #bef1dc;
+                color: green;
+                margin-left: 10px;
+                transition: background linear 1s;
+            }
+
+                .link:hover {
+                    background: green;
+                    color: #fff;
+                }
+        </style>
+    
+</head>
+<body>
+    <div id="menu">
+        <h1>This is audience dashboard</h1>
+        @Html.ActionLink("Profile", "Index", "audience", new { @class = "link" })
+        @Html.ActionLink("Game Types", "Index", "audience", new { @class = "link" })
+        @Html.ActionLink("Broad Cast Info", "BroadCastDetails", "User", new { @class = "link" })
+        @Html.ActionLink("Booking", "audienceBooking", "User", new { @class = "link" })
+        @Html.ActionLink("Booking Details", "bookingDetails", "User", new { @class = "link" })
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Booking</title>
+</head>
+<body>
+    <div> 
+        @using(Html.BeginForm())
+            {
+        <table>
+            <tr>
+                <td>BroadCast Detail Id</td>
+                <td><input type="text" name="DetailId" /></td>
+            </tr>
+            <tr>
+                <td>BookingDate</td>
+                <td><input type="text" name="BookingDate" /></td>
+            </tr>
+            <tr>
+                <td>Remarks</td>
+                <td><input type="text" name="Remarks" /></td>
+            </tr>
+            <tr><td><input type="submit" value="Book" /></td></tr>
+        </table>
+            }
+    </div>
+</body>
+</html>

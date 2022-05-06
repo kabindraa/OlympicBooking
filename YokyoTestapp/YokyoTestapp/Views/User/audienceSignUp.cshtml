@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>audienceSignUp</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div>
+            <h1>Audience Sign Up</h1>
+            <table cellpadding="30">
+                <tr>
+                    <td>UserName:</td>
+                    <td><input type="text" name="UserName" /></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="Password" /></td>
+                </tr>
+
+                <tr>
+                    <td>Contact:</td>
+                    <td><input type="number" name="Contact" /></td>
+                </tr>
+
+                <tr>
+                    <td>Address:</td>
+                    <td><input type="text" name="Address" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Sign up" /></td>
+                </tr>
+            </table>
+        </div>
+    }
+</body>
+</html>
